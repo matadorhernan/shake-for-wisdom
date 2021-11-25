@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Shake for Wisdom",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

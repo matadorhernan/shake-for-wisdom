@@ -1,0 +1,7 @@
+{
+  "name": "Shake for Wisdom",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
