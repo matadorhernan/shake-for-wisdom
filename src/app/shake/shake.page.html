@@ -1,0 +1,32 @@
+<ion-content
+  class="magictime slideDownReturn"
+  appTouchSwipes
+  (swipeLeft)="onSwipe()"
+  (swipeRight)="onSwipe()"
+>
+  <div
+    class="
+      container
+      h-100
+      d-flex
+      flex-column
+      align-items-ceneter
+      justify-content-center
+    "
+  >
+    <h1
+      [ngClass]=" isLoading ? ' slideDown' : 'slideDownReturn'
+    "
+      class="phone-help-text display-3 text-center text-white magictime"
+    >
+      {{isLoading ? loadingLabel: (item | async)?.label }}
+    </h1>
+  </div>
+  <div class="alert-container">
+    <app-alert
+      class="magictime slideDownReturn"
+      icon="smartphone"
+      label="Swipe sideways or shake again!"
+    ></app-alert>
+  </div>
+</ion-content>

@@ -1,22 +1,32 @@
-import { Component } from '@angular/core';
-import { DataService, Message } from '../services/data.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ShakeService } from '@app/shared/services/shake/shake.service';
+import { NavController } from '@ionic/angular';
+import { skip } from 'rxjs/operators';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
-export class HomePage {
-  constructor(private data: DataService) {}
+export class HomePage implements OnInit, OnDestroy {
+  constructor(
+    private readonly router: NavController,
+    private readonly shakeService: ShakeService
+  ) {}
 
-  refresh(ev) {
-    setTimeout(() => {
-      ev.detail.complete();
-    }, 3000);
+  public ngOnInit(): void {
+    this.shakeService.isShaking
+      .pipe(skip(1), untilDestroyed(this))
+      .subscribe(() => {
+        this.onSwipe();
+      });
   }
 
-  getMessages(): Message[] {
-    return this.data.getMessages();
-  }
+  //untilDestroyed pipe
+  public ngOnDestroy(): void {}
 
+  public onSwipe(): void {
+    this.router.navigateRoot(['/shake']);
+  }
 }

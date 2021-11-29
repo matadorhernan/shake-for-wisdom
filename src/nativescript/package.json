@@ -1,0 +1,8 @@
+{
+  "name": "source_nativescript",
+  "dependencies": {
+    "@nativescript/core": "~8.0.0",
+    "@nativescript/types": "~8.0.0",
+    "tns-core-modules": "^6.5.27"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "./",
+    "outDir": "../../www/nativescript",
+    "sourceMap": false,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2017",
+    "lib": ["es2018", "dom"],
+    "skipLibCheck": true,
+    "types": []
+  },
+  "files": ["references.d.ts", "index.ts"]
+}
