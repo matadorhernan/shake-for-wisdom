@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ShakeService } from '@app/shared/services/shake/shake.service';
 import { NavController } from '@ionic/angular';
-import { skip } from 'rxjs/operators';
+import { delay, skip } from 'rxjs/operators';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
@@ -17,7 +17,7 @@ export class HomePage implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.shakeService.isShaking
-      .pipe(skip(1), untilDestroyed(this))
+      .pipe(skip(1), delay(300), untilDestroyed(this))
       .subscribe(() => {
         this.onSwipe();
       });

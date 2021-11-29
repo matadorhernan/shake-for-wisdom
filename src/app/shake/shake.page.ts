@@ -4,7 +4,7 @@ import { WisdomService } from '@app/shared/services/wisdom/wisdom.service';
 import { sample } from 'lodash';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, filter, skip } from 'rxjs/operators';
+import { map, filter, skip, delay } from 'rxjs/operators';
 import { WisdomItem } from 'src/core/types';
 
 @Component({
@@ -37,6 +37,7 @@ export class ShakePage implements OnInit, OnDestroy {
     this.shakeService.isShaking
       .pipe(
         skip(1),
+        delay(300),
         untilDestroyed(this),
         filter(() => !this.isLoading)
       )

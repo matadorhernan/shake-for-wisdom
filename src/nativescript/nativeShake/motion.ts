@@ -2,8 +2,8 @@ import { AccelerometerData, SensorOptions } from './motion.types';
 
 const baseAcceleration = -9.81;
 
-let coreMotionManager: CMMotionManager;
-let sensorManager: any;
+let coreMotionManager: CMMotionManager | undefined;
+let sensorManager: android.hardware.SensorManager | undefined;
 let sensorListener: android.hardware.SensorEventListener | undefined;
 
 if (native.isAndroid) {
